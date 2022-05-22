@@ -1,8 +1,5 @@
 # Stock Portfolio Suggestion Engine
 
-App deployed at:
-https://stock-portfolio-suggession.herokuapp.com
-
 
 ### Input
 

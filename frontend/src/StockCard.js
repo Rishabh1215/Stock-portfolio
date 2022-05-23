@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import {
-  Typography,
-  Divider,
-  Spin,
-  Row,
-  Col,
-  Card,
-  Icon,
-  Modal,
-  Button,
-} from "antd";
+import { Typography, Col, Card, Icon, Modal } from "antd";
 import {
   LineChart,
   Line,
@@ -18,14 +8,10 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Label,
-  ResponsiveContainer
 } from "recharts";
 import axios from "axios";
 
-const queryString = require("query-string");
-
-const { Title, Paragraph, Text } = Typography;
+const { Text } = Typography;
 
 const cardPositive = {
   boxShadow: "0 3px 8px rgba(106, 204, 66, 0.65)",
@@ -386,63 +372,36 @@ class StockCard extends Component {
       title: `Stock Details for ${this.props.data.companyName} (${this.props.data.symbol})`,
       width: 1200,
       content: (
-        // <div className="tradingview-widget-container" id="stockChart">
-        //   <LineChart
-        //     width={600}
-        //     height={200}
-        //     data={response.data.data}
-        //     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        //   >
-        //     <CartesianGrid strokeDasharray="3 3" />
-        //     <XAxis dataKey="date">
-        //       <Label value="Date" offset={0} position="insideBottom" />
-        //     </XAxis>
-        //     <YAxis
-        //       label={{ value: "Price($)", angle: -90, position: "insideLeft" }}
-        //     />
-        //     <Tooltip />
-        //     <Line
-        //       connectNulls={true}
-        //       type="monotone"
-        //       dataKey="close"
-        //       stroke="#82ca9d"
-        //       fill="#82ca9d"
-        //     />
-        //     <Line
-        //       connectNulls={true}
-        //       type="monotone"
-        //       dataKey="open"
-        //       stroke="#8884d8"
-        //       fill="#8884d8"
-        //     />
-        //   </LineChart>
-        // </div>
         <div>
-          {/* <ResponsiveContainer width="100%" height="100%"> */}
-            <LineChart
-              width={1000}
-              height={300}
-              data={response && response.data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis 
-              label={{ value: "Price($)", angle: -90, position: "insideLeft" }}/>
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="open" stroke="#8884d8" activeDot={{ r: 4 }} />
-              <Line type="monotone" dataKey="close" stroke="#82ca9d" />
-            </LineChart>
-          {/* </ResponsiveContainer> */}
+          <LineChart
+            width={1000}
+            height={300}
+            data={response && response.data.reverse()}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis
+              label={{ value: "Price($)", angle: -90, position: "insideLeft" }}
+            />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="open"
+              stroke="#8884d8"
+              activeDot={{ r: 4 }}
+            />
+            <Line type="monotone" dataKey="close" stroke="#82ca9d" />
+          </LineChart>
         </div>
       ),
-      onOk() { },
+      onOk() {},
     });
   };
 
@@ -462,14 +421,12 @@ class StockCard extends Component {
 
     const getTodayDate = () => {
       var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
       var yyyy = today.getFullYear();
-
-      today = mm + '/' + dd + '/' + yyyy;
-      // document.write(today);
+      today = mm + "/" + dd + "/" + yyyy;
       return today;
-    }
+    };
 
     return (
       <div>
@@ -499,7 +456,7 @@ class StockCard extends Component {
               />{" "}
               {props.change.toFixed(2)} $
               <Text style={{ fontSize: 10 }}>
-                ( {(props.changePercent).toFixed(2)} % )
+                ( {props.changePercent.toFixed(2)} % )
               </Text>
               <br />
               <div style={{ textAlign: "right" }}>

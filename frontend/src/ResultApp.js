@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Typography, Divider, Spin, Row, Col, Card } from "antd";
+import { Typography, Divider, Spin, Row } from "antd";
 import axios from "axios";
 import StockCard from "./StockCard";
 
 const queryString = require("query-string");
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Text } = Typography;
 
 class ResultApp extends Component {
   state = {
@@ -35,15 +35,7 @@ class ResultApp extends Component {
       postBody.Strategies.push(values.strategy);
     }
 
-    console.log(postBody);
-
-    let response = await axios.post(
-      `http://127.0.0.1:5000/getData`,
-      postBody
-    );
-
-    console.log(response);
-    console.log(JSON.stringify(response));
+    let response = await axios.post(`http://127.0.0.1:5000/getData`, postBody);
 
     this.setState({ loading: false });
     if (response.data.strategiesResponse[1]) {
@@ -60,9 +52,6 @@ class ResultApp extends Component {
     }
 
     this.setState({ amountResponse: response.data.amountResponse });
-
-    console.log("this.state.strategyResponse");
-    console.log(this.state.strategyResponse);
   }
 
   render() {
@@ -81,11 +70,11 @@ class ResultApp extends Component {
       <div className="ResultApp">
         <div className="box effect1">
           <Typography>
-            <div style={{ textAlign: "center"}}>
+            <div style={{ textAlign: "center" }}>
               <Title level={3}>
-                {" "}
-                {/*<a href="/"><span style={{color:"black !important"}}>Stock Portfolio Suggestion Engine </span></a>*/}
-                <span style={{color:"#4682b4"}}>Stock Portfolio Suggestion for Investors </span>
+                <span style={{ color: "#4682b4" }}>
+                  Stock Portfolio Suggestion for Investors{" "}
+                </span>
               </Title>
             </div>
             <Divider />

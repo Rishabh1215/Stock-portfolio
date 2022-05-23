@@ -39,3 +39,7 @@ The suggestion engine will output:
 - How the money are divided to buy the suggested stock.
 - The current values (up to the sec via Internet) of the overall portfolio (including all the stocks / ETFs)
 - A weekly trend of the portfolio value. In order words, keep 5 days history of the overall portfolio value.
+
+### Steps to run the project:
+1) Go to backend folder and do python -m flask run or just flask run. It will start the backend server.
+2) Go to Front end folder and do npm install and then npm start. It will start the client server.

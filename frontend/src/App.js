@@ -69,6 +69,7 @@ class App extends Component {
       largeChartUrl: "",
       width: "100%",
       height: "660",
+      backgroundColor :"#e5e4e2",
       plotLineColorGrowing: "rgba(33, 150, 243, 1)",
       plotLineColorFalling: "rgba(33, 150, 243, 1)",
       gridLineColor: "rgba(233, 233, 234, 1)",
@@ -193,7 +194,7 @@ class App extends Component {
         },
       ],
     });
-    document.getElementById("rohit").appendChild(script);
+    document.getElementById("tradingWidget").appendChild(script);
   }
 
   handleNext = () => {
@@ -263,7 +264,8 @@ class App extends Component {
             <div style={{ textAlign: "center" }}>
               <Title level={3}>
                 {" "}
-                <a href="/">Stock Portfolio Suggestion Engine </a>
+                {/*<a href="/"><span style={{color:"black !important"}}>Stock Portfolio Suggestion Engine </span></a>*/}
+                <span style={{color:"#4682b4"}}>Stock Portfolio Suggestion for Investors</span>
               </Title>
             </div>
             <Divider />
@@ -393,7 +395,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col span={16} offset={4}>
-              <div id="rohit">
+              <div id="tradingWidget">
                 <div className="tradingview-widget-container">
                   <div className="tradingview-widget-container__widget"></div>
                 </div>

@@ -81,10 +81,11 @@ class ResultApp extends Component {
       <div className="ResultApp">
         <div className="box effect1">
           <Typography>
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center"}}>
               <Title level={3}>
                 {" "}
-                <a href="/">Stock Portfolio Suggestion Engine </a>
+                {/*<a href="/"><span style={{color:"black !important"}}>Stock Portfolio Suggestion Engine </span></a>*/}
+                <span style={{color:"#4682b4"}}>Stock Portfolio Suggestion for Investors </span>
               </Title>
             </div>
             <Divider />
